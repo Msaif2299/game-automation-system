@@ -1,0 +1,31 @@
+#play-button {
+    height: 50px;
+    width: 50px;
+    margin: 15px;
+    justify-content: center;
+    align-content: center;
+}
+#maximize-button {
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 14%, rgba(115, 83, 3, 1) 55%, rgba(9, 10, 10, 1) 79%);
+}
+#control-panel {
+    background: black;
+    font-size: 32px;
+}
+
+#control-panel button {
+    font-family: retro;
+    color: #3abd40;
+    background: black;
+    border: 1px solid #3abd40;
+    font-size: 32px;
+    text-align: center;
+    margin: 5px;
+}
+#control-panel button:active{
+    background: #1c5d1f;
+}
+#control-panel .selectors {
+    font-size: 24px;
+    background: black;
+}

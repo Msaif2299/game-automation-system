@@ -1,0 +1,49 @@
+@font-face {
+    font-family: retro;
+    src: url(../assets/fonts/computer_pixel-7.ttf);
+}
+html {
+    background: #3abd40;
+    text-align: center;
+    color: white;
+    font-family: retro;
+}
+
+body {
+    margin: 0;
+    color: white;
+    font-family: retro, "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.selectors option {
+    font-family: retro;
+    border: 1px solid #3abd40;
+    background: black;
+}
+.selectors {
+    font-family: retro;
+    background: black;
+    text-align: center;
+    color: #3abd40;
+    border: 1px solid #3abd40;
+}
+label {
+    color:#3abd40;
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+}
+
+#app {
+    height: 300px;
+    width: 600px;
+    text-align: center;
+    --wails-draggable: drag;
+}

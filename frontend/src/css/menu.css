@@ -1,0 +1,41 @@
+#wrapper{
+    border: 10px solid black;
+    box-sizing: border-box;
+    --aug-tr: 50px;
+    height: 100%;
+    width: 100%;
+    background: black;
+    --aug-inlay-bg: black;
+    justify-content: center;
+    align-items: center;
+}
+#menu{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10px;
+    height: 40px;
+    width: 120px;
+    float: right;
+    background: #3abd40;
+    border: 5px solid #3abd40;
+}
+.menu-button{
+    text-align: center;
+    background: radial-gradient(circle, rgba(121, 9, 43, 1) 35%, rgba(36, 23, 0, 1) 99%, rgba(255, 98, 0, 1) 100%);
+    border-width: 2px;
+    border-style: solid;
+    border-color:black;
+    margin-left: 3px;
+    border-radius: 50%;
+    font-size: 0.650em;
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+}
+.menu-button:hover{
+    background: radial-gradient(circle, rgba(255, 98, 0, 1) 0%, rgba(121, 9, 47, 1) 60%, rgba(36, 23, 0, 1) 99%);
+}
+.menu-button:active{
+    background: radial-gradient(circle, rgba(0, 255, 29, 1) 0%, rgba(9, 121, 29, 1) 60%, rgba(1, 36, 0, 1) 86%);
+}
