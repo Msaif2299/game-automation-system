@@ -128,6 +128,13 @@ func (a *Bot) scriptLoop() {
 		}
 		timeToWait := int32(a.currentScript.NextWaitTimeInSeconds() * 1000) // convert to milliseconds
 		time.Sleep(time.Duration(timeToWait) * time.Millisecond)
-		a.eventChannel <- a.currentScript.Next()
+		event := a.currentScript.Next()
+		// No need to send an event if its just for sleeping. TODO: Move this to the event consumer when making code clearer
+		if event.msg_type == Delay {
+			timeToWait = int32(event.delayInSeconds * 1000)
+			time.Sleep(time.Duration(timeToWait) * time.Millisecond)
+			continue
+		}
+		a.eventChannel <- event
 	}
 }

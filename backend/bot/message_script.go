@@ -15,6 +15,7 @@ type MessageType int
 const (
 	Click MessageType = iota
 	KeyPress
+	Delay
 	Exit
 )
 
@@ -105,6 +106,10 @@ func NewMessage(msg_type MessageType, x int32, y int32, key rune) (*Message, err
 		return &Message{
 			msg_type: msg_type,
 			key:      key,
+		}, nil
+	case Delay: // TODO: Either take delayInSeconds through constructor or move all the values out of it and assign them separately
+		return &Message{
+			msg_type: Delay,
 		}, nil
 	case Exit:
 		return &Message{

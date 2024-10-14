@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestFunctionality(t *testing.T) {
+func TestSenderConsumer(t *testing.T) {
 	input := make(chan *Message, 500)
 	var err error
 	defer func() {

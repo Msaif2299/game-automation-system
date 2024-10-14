@@ -75,6 +75,8 @@ func (c *CurrentScript) LoadFromFile(fname string) {
 			events, err = c.parseJoinMap(commandSplit[1:])
 		case "REST":
 			events, err = c.parseRest()
+		case "DELAY":
+			events, err = c.parseDelay(commandSplit[1:])
 		case "POTION":
 			events, err = c.parsePotion()
 		case "QUEST_TURNIN":
@@ -186,6 +188,23 @@ func (c *CurrentScript) parseRest() ([]*Message, error) {
 	return c.parseSingleClickNoParamCmd(1275, 963)
 }
 
+// parseDelay parses the delay command and makes the script sleep for the defined interval
+func (c *CurrentScript) parseDelay(params []string) ([]*Message, error) {
+	if len(params) != 1 {
+		return []*Message{}, fmt.Errorf("invalid number of params for DELAY command, only need 1 parameter signifying time in seconds, found: %d params", len(params))
+	}
+	delayInSeconds, err := strconv.ParseFloat(params[0], 32)
+	if err != nil {
+		return []*Message{}, fmt.Errorf("error converting delay parameter for DELAY command into float32, err: %s", err.Error())
+	}
+	msg, err := NewMessage(Delay, 0, 0, '0')
+	if msg == nil {
+		return []*Message{}, err
+	}
+	msg.delayInSeconds = float32(delayInSeconds)
+	return []*Message{msg}, nil
+}
+
 // parsePotion parses the clicking the potion button command
 func (c *CurrentScript) parsePotion() ([]*Message, error) {
 	return c.parseSingleClickNoParamCmd(1162, 945)
@@ -295,7 +314,7 @@ func (c *CurrentScript) parseQuestTurnIn(command string) ([]*Message, error) {
 	}
 	events = append(events, clickEvents...)
 	keyPresses := []string{
-		"666",
+		"666", // type 666 to fill the quest number of turn ins to a random big number
 	}
 	keyPressEvents, err := c.parseQuestTurnInKeyPressGenerator(keyPresses)
 	if err != nil {
